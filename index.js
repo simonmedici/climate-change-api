@@ -136,7 +136,7 @@ app.get('/news/:newspaperId', (req, res) => {
 
     const newspaperAddress = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].address
     const newspaperBase = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].base
-    console.log(newspaperAddress)
+
     axios.get(newspaperAddress)
         .then(response => {
             const html = response.data
@@ -184,11 +184,10 @@ app.get('/news/country/:newspaperCountryId', (req, res) => {
 
 console.log(countryListAddresses[1])
     let j = 0;
-    
+    while(j < countryListAddresses){
         axios.get(countryListAddresses[j])
             .then(respond => {
                 const html = response.data
-                console.log(html)
                 const $ = cheerio.load(html)
                 
 
@@ -206,7 +205,8 @@ console.log(countryListAddresses[1])
                 })
                 res.json(countrySearch)
             }).catch(err => console.log(err))
-   
+    j++
+    }
     
     
  console.log(countrySearch)
