@@ -160,58 +160,5 @@ app.get('/news/:newspaperId', (req, res) => {
 
 })
 
-app.get('/news/country/:newspaperCountryId', (req, res) => {
-    
-    //Definition of variables and arrays
-    
-    const newspaperByCountry = req.params.newspaperCountryId
-    const countryListAddresses = []
-    const countrySearch = []
-
-    //filter the newspapers array for newspapers from a specific country
-
-    const newspaper = newspapers.filter(newspaper => newspaper.country == newspaperByCountry)
-    
-    //get the newspapers url from 
-
-    let i = 0;
-    while(i < newspaper.length){
-        
-        const newspaperAddress = newspapers.filter(newspaper => newspaper.country == newspaperByCountry)[i].address
-        countryListAddresses.push(newspaperAddress)
-        i++
-    }
-
-console.log(countryListAddresses[1])
-    let j = 0;
-    while(j < countryListAddresses){
-        axios.get(countryListAddresses[j])
-            .then(respond => {
-                const html = response.data
-                const $ = cheerio.load(html)
-                
-
-                $('a:contains("Klima")', html).each(function () {
-                    const title = $(this).text()
-                    const regexTitle = title.replace(/^[\D]&&\n|\s\s+/g, '')
-                    const url = $(this).attr('href')
-    
-                    countrySearch.push({
-                        regexTitle,
-                        url: newspaper.base + url,
-                        source: newspaper.name,
-                        country: newspaper.country
-                    })
-                })
-                res.json(countrySearch)
-            }).catch(err => console.log(err))
-    j++
-    }
-    
-    
- console.log(countrySearch)
-})
-
-
 
 app.listen(PORT, () => console.log(`server running on PORT ${PORT}`))
