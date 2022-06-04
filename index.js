@@ -28,7 +28,7 @@ const newspapers = [
     {
         name: 'welt.de',
         address: 'https://www.welt.de/themen/klimawandel/',
-        base: 'welt.de',
+        base: 'https://www.welt.de',
         country: 'deutschland'
     },
     {
@@ -46,7 +46,7 @@ const newspapers = [
     {
         name: 'taz',
         address: 'https://taz.de/Schwerpunkt-Klimawandel/!t5008262/',
-        base:'',
+        base:'https://taz.de/',
         country: 'deutschland'
     },
     {
@@ -64,19 +64,19 @@ const newspapers = [
     {
         name: 'tages anzeiger',
         address: 'https://www.tagesanzeiger.ch/wissen/klimawandel',
-        base:'',
+        base:'https://www.tagesanzeiger.ch',
         country: 'schweiz'
     },
     {
         name: 'der bund',
         address: 'https://www.derbund.ch/tags/68358/klimawandel',
-        base:'',
+        base:'https://www.derbund.ch/',
         country: 'schweiz'
     },
     {
         name: 'zürichsee zeitung',
         address: 'https://www.zsz.ch/tags/68358/klimawandel',
-        base:'',
+        base:'https://www.zsz.ch',
         country: 'schweiz'
     },
     {
